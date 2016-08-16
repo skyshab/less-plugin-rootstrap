@@ -13,13 +13,6 @@ requires Less v2.4.0
 npm install -g less-plugin-rootstrap
 ```
 
-and then on the command line,
-
-```
-lessc file.less --less-plugin-rootstrap
-```
-
-
 ## Programmatic usage
 
 This example shows how to use the plugin in your gulpfile.js
@@ -47,7 +40,3 @@ gulp.task('less-public', function() {
 
 
 ```
-
-## Browser usage
-
-Browser usage is not supported at this time.
