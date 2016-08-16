@@ -1,7 +1,7 @@
 less-plugin-rootstrap
 ========================
 
-Imports [Rootstrap](http://rootstrap.io/) mixins before your custom Less code.
+Imports [Rootstrap](https://github.com/skyshab/rootstrap-library/) mixins before your custom Less code.
 
 ## lessc usage
 
@@ -16,17 +16,36 @@ npm install -g less-plugin-rootstrap
 and then on the command line,
 
 ```
-lessc file.less --rootstrap
+lessc file.less --less-plugin-rootstrap
 ```
 
 
 ## Programmatic usage
 
+This example shows how to use the plugin in your gulpfile.js
+
 ```
-var LessPluginRootstrap = require('less-plugin-rootstrap'),
-    rootstrapPlugin = new LessPluginRootstrap();
-less.render(lessString, { plugins: [rootstrapPlugin] })
-  .then(
+
+// LESS configuration
+var gulp = require('gulp');
+var less = require('gulp-less');
+
+// load rootstrap
+var rootstrapConfig = require('./rootstrap-config.json'),
+rootstrap = require('less-plugin-rootstrap'),
+rootstrapPlugin = new rootstrap({'config': rootstrapConfig});
+
+gulp.task('default', function() {
+    gulp.watch('./public/less/*.less', ['less-public']);
+});
+
+gulp.task('less-public', function() {
+  gulp.src('./public/less/division-public.less')
+    .pipe(less({ plugins: [rootstrapPlugin] }))
+    .pipe(gulp.dest('./public/css/'));
+});
+
+
 ```
 
 ## Browser usage
