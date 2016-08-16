@@ -15,7 +15,7 @@ npm install -g less-plugin-rootstrap
 
 ## Programmatic usage
 
-This example shows how to use the plugin in your gulpfile.js
+This example shows how to use the plugin in your gulpfile.js. A JSON configuration file is required to pass into the plugin object on creation.
 
 ```
 
@@ -40,3 +40,30 @@ gulp.task('less-public', function() {
 
 
 ```
+
+Here is an example configuration file
+
+```
+{
+    "devices" : {
+        "mobile" : {
+            "min" : "",
+            "max" :  "480.001px"
+        },
+        "tablet" : {
+            "min" : "481px",
+            "max" :  "980.001px"
+        },
+        "desktop" : {
+            "min" : "981px",
+            "max" :  ""
+        }
+    },
+    "vars" : {
+        "mytestvar" : "500px"
+    }
+}
+
+```
+
+In addition to defining device breakpoints, you can add any other LESS variables you want defined in your project. 
